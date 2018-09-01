@@ -395,7 +395,9 @@ class _LoginScreen3State extends State<LoginScreen3>
                         borderRadius: new BorderRadius.circular(30.0),
                       ),
                       color: Colors.teal,
-                      onPressed: () => {},
+                      onPressed: () {
+                        Navigator.of(context).pushNamed("/swipe");
+                      },
                       child: new Container(
                         padding: const EdgeInsets.symmetric(
                           vertical: 20.0,

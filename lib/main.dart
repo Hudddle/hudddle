@@ -12,11 +12,11 @@ class MyApp extends StatelessWidget {
       theme: new ThemeData(
         primarySwatch: Colors.blue,
       ),
-      // routes: <String, WidgetBuilder>{
-      //   '/landing': (BuildContext context) => login3,
-      //   '/swipe': (BuildContext context) => swipe,
-      // },
-      home: swipe,//new MyHomePage(),
+      routes: <String, WidgetBuilder>{
+        '/landing': (BuildContext context) => login3,
+        '/swipe': (BuildContext context) => swipe,
+      },
+      home: login3,//new MyHomePage(),
       debugShowCheckedModeBanner: false,
     );
   }

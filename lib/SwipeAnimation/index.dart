@@ -131,12 +131,17 @@ class CardDemoState extends State<CardDemo> with TickerProviderStateMixin {
           elevation: 0.0,
           backgroundColor: Colors.teal[300],
           centerTitle: true,
-          leading: new Container(
-            margin: const EdgeInsets.all(15.0),
-            child: new Icon(
-              Icons.equalizer,
-              color: Colors.white,
-              size: 30.0,
+          leading: new GestureDetector(
+            onTap: () {
+              Navigator.of(context).pop();
+            },
+            child: new Container(
+              margin: const EdgeInsets.all(15.0),
+              child: new Icon(
+                Icons.arrow_back,
+                color: Colors.white,
+                size: 30.0,
+              ),
             ),
           ),
           actions: <Widget>[
