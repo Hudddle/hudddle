@@ -27,7 +27,7 @@ dev_dependencies:
 
 flutter_icons:
   android: true 
-  ios: "Hudddle"
+  ios: "hudddle"
   image_path: "assets/icon.png"
   adaptive_icon_background: "#FFFAFAFA"
   # adaptive_icon_foreground: "assets/icons/icon-foreground.png"
@@ -49,6 +49,17 @@ flutter:
     - assets/images/full-bloom.png
     - assets/images/mountains.jpeg
     - assets/images/mountains.jpg
+    - assets/img1.jpg
+    - assets/img2.jpg
+    - assets/img3.jpg
+    - assets/img4.jpg
+    - assets/img5.jpg
+    - assets/avatars/avatar-1.jpg
+    - assets/avatars/avatar-2.jpg
+    - assets/avatars/avatar-3.jpg
+    - assets/avatars/avatar-4.jpg
+    - assets/avatars/avatar-5.jpg
+    - assets/avatars/avatar-6.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.io/assets-and-images/#resolution-aware.
