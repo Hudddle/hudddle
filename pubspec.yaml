@@ -23,6 +23,14 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  flutter_launcher_icons: "^0.6.1"
+
+flutter_icons:
+  android: true 
+  ios: "Hudddle"
+  image_path: "assets/icon.png"
+  adaptive_icon_background: "#FFFAFAFA"
+  # adaptive_icon_foreground: "assets/icons/icon-foreground.png"
 
 
 # For information on the generic Dart part of this file, see the
