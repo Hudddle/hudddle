@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "635518123926",
+    "firebase_url": "https://hudddle-66358.firebaseio.com",
+    "project_id": "hudddle-66358",
+    "storage_bucket": "hudddle-66358.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:635518123926:android:151cd5c1662c1f9d",
+        "android_client_info": {
+          "package_name": "com.linkmalloc.hudddle"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "635518123926-sr4ocjj1e1pimb85397btcad555mfd7d.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.linkmalloc.hudddle",
+            "certificate_hash": "bac37842ead184e854252c760f40c214fea6fbc0"
+          }
+        },
+        {
+          "client_id": "635518123926-pa2eec0is51vde6pp9cnidgilnc12hod.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDYB1fbTqaxO6yhTXXLteJifriz9aopgGk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "635518123926-pa2eec0is51vde6pp9cnidgilnc12hod.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
