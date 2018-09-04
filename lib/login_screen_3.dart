@@ -1,4 +1,12 @@
+import 'dart:async';
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+
+final FirebaseAuth _auth = FirebaseAuth.instance;
+final GoogleSignIn _googleSignIn = new GoogleSignIn();
 
 class LoginScreen3 extends StatefulWidget {
   @override
@@ -396,7 +404,7 @@ class _LoginScreen3State extends State<LoginScreen3>
                       ),
                       color: Colors.teal,
                       onPressed: () {
-                        Navigator.of(context).pushNamed("/swipe");
+                        _signInWithEmail();
                       },
                       child: new Container(
                         padding: const EdgeInsets.symmetric(
@@ -579,7 +587,7 @@ class _LoginScreen3State extends State<LoginScreen3>
     return new Material(
       type: MaterialType.transparency,
       child: new SingleChildScrollView(
-              child: new Container(
+        child: new Container(
           height: MediaQuery.of(context).size.height,
           decoration: BoxDecoration(
             color: Colors.white,
@@ -621,12 +629,15 @@ class _LoginScreen3State extends State<LoginScreen3>
               ),
               new Container(
                 width: MediaQuery.of(context).size.width,
-                margin: const EdgeInsets.only(left: 40.0, right: 40.0, top: 10.0),
+                margin:
+                    const EdgeInsets.only(left: 40.0, right: 40.0, top: 10.0),
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
                   border: Border(
                     bottom: BorderSide(
-                        color: Colors.teal, width: 0.5, style: BorderStyle.solid),
+                        color: Colors.teal,
+                        width: 0.5,
+                        style: BorderStyle.solid),
                   ),
                 ),
                 padding: const EdgeInsets.only(left: 0.0, right: 10.0),
@@ -669,12 +680,15 @@ class _LoginScreen3State extends State<LoginScreen3>
               ),
               new Container(
                 width: MediaQuery.of(context).size.width,
-                margin: const EdgeInsets.only(left: 40.0, right: 40.0, top: 10.0),
+                margin:
+                    const EdgeInsets.only(left: 40.0, right: 40.0, top: 10.0),
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
                   border: Border(
                     bottom: BorderSide(
-                        color: Colors.teal, width: 0.5, style: BorderStyle.solid),
+                        color: Colors.teal,
+                        width: 0.5,
+                        style: BorderStyle.solid),
                   ),
                 ),
                 padding: const EdgeInsets.only(left: 0.0, right: 10.0),
@@ -718,12 +732,15 @@ class _LoginScreen3State extends State<LoginScreen3>
               ),
               new Container(
                 width: MediaQuery.of(context).size.width,
-                margin: const EdgeInsets.only(left: 40.0, right: 40.0, top: 10.0),
+                margin:
+                    const EdgeInsets.only(left: 40.0, right: 40.0, top: 10.0),
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
                   border: Border(
                     bottom: BorderSide(
-                        color: Colors.teal, width: 0.5, style: BorderStyle.solid),
+                        color: Colors.teal,
+                        width: 0.5,
+                        style: BorderStyle.solid),
                   ),
                 ),
                 padding: const EdgeInsets.only(left: 0.0, right: 10.0),
@@ -770,7 +787,8 @@ class _LoginScreen3State extends State<LoginScreen3>
               ),
               new Container(
                 width: MediaQuery.of(context).size.width,
-                margin: const EdgeInsets.only(left: 30.0, right: 30.0, top: 50.0),
+                margin:
+                    const EdgeInsets.only(left: 30.0, right: 30.0, top: 50.0),
                 alignment: Alignment.center,
                 child: new Row(
                   children: <Widget>[
@@ -838,33 +856,57 @@ class _LoginScreen3State extends State<LoginScreen3>
   Widget build(BuildContext context) {
     return Container(
         height: MediaQuery.of(context).size.height,
-//      child: new GestureDetector(
-//        onHorizontalDragStart: _onHorizontalDragStart,
-//        onHorizontalDragUpdate: _onHorizontalDragUpdate,
-//        onHorizontalDragEnd: _onHorizontalDragEnd,
-//        behavior: HitTestBehavior.translucent,
-//        child: Stack(
-//          children: <Widget>[
-//            new FractionalTranslation(
-//              translation: Offset(-1 - (scrollPercent / (1 / numCards)), 0.0),
-//              child: SignupPage(),
-//            ),
-//            new FractionalTranslation(
-//              translation: Offset(0 - (scrollPercent / (1 / numCards)), 0.0),
-//              child: HomePage(),
-//            ),
-//            new FractionalTranslation(
-//              translation: Offset(1 - (scrollPercent / (1 / numCards)), 0.0),
-//              child: LoginPage(),
-//            ),
-//          ],
-//        ),
-//      ),
+        //      child: new GestureDetector(
+        //        onHorizontalDragStart: _onHorizontalDragStart,
+        //        onHorizontalDragUpdate: _onHorizontalDragUpdate,
+        //        onHorizontalDragEnd: _onHorizontalDragEnd,
+        //        behavior: HitTestBehavior.translucent,
+        //        child: Stack(
+        //          children: <Widget>[
+        //            new FractionalTranslation(
+        //              translation: Offset(-1 - (scrollPercent / (1 / numCards)), 0.0),
+        //              child: SignupPage(),
+        //            ),
+        //            new FractionalTranslation(
+        //              translation: Offset(0 - (scrollPercent / (1 / numCards)), 0.0),
+        //              child: HomePage(),
+        //            ),
+        //            new FractionalTranslation(
+        //              translation: Offset(1 - (scrollPercent / (1 / numCards)), 0.0),
+        //              child: LoginPage(),
+        //            ),
+        //          ],
+        //        ),
+        //      ),
         child: PageView(
           controller: _controller,
           physics: new AlwaysScrollableScrollPhysics(),
           children: <Widget>[LoginPage(), HomePage(), SignupPage()],
           scrollDirection: Axis.horizontal,
         ));
+  }
+
+  Future<Null> _signInWithEmail() async {
+    final FirebaseUser user = await _auth.signInAnonymously();
+    assert(user != null);
+    assert(user.isAnonymous);
+    assert(!user.isEmailVerified);
+    assert(await user.getIdToken() != null);
+    if (Platform.isIOS) {
+      // Anonymous auth doesn't show up as a provider on iOS
+      assert(user.providerData.isEmpty);
+    } else if (Platform.isAndroid) {
+      // Anonymous auth does show up as a provider on Android
+      assert(user.providerData.length == 1);
+      assert(user.providerData[0].providerId == 'firebase');
+      assert(user.providerData[0].uid != null);
+      assert(user.providerData[0].displayName == null);
+      assert(user.providerData[0].photoUrl == null);
+      assert(user.providerData[0].email == null);
+    }
+
+    final FirebaseUser currentUser = await _auth.currentUser();
+    assert(user.uid == currentUser.uid);
+    Navigator.of(context).pushNamed("/swipe");
   }
 }
